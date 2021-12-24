@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_people",
+  "info": {
+    "singularName": "contact-person",
+    "pluralName": "contact-people",
+    "displayName": "Contact Person"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "role": {
+      "type": "string"
+    },
+    "npm": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true
+    },
+    "idLine": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

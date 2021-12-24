@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "registration_details",
+  "info": {
+    "singularName": "registration-detail",
+    "pluralName": "registration-details",
+    "displayName": "Registration Detail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "namaLengkap": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "namaPanggilan": {
+      "type": "string",
+      "required": true
+    },
+    "profilePicture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "npm": {
+      "type": "biginteger",
+      "required": true
+    },
+    "idLine": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "game": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game.game"
+    },
+    "jenisElemen": {
+      "type": "enumeration",
+      "enum": [
+        "elemen",
+        "mahasiswa"
+      ],
+      "required": true
+    }
+  }
+}
