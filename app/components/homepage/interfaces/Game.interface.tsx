@@ -1,6 +1,14 @@
 export interface GameInterface {
-  title: string;
-  img: string;
-  url: string;
-  index: number;
+  id: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  image: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
 }

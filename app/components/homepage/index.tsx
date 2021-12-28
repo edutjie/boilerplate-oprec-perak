@@ -1,6 +1,6 @@
 import React from "react";
 import Games from "./Games";
-import TextOutline from "./styles/TextOutline.styled";
+import { TextOutline } from "./styles";
 
 const Homepage = () => {
   return (

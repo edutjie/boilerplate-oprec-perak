@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Montserrat;
+@layer base {
+  @font-face {
+    font-family: "MADE Sunflower Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("MADE Sunflower Regular"),
+      url("/fonts/MADE Sunflower PERSONAL USE.woff") format("woff");
+  }
 }

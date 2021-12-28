@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Background from "../app/components/homepage/styles/Background.styled";
+import { Background } from "../app/components/homepage/styles";
 import Homepage from "../app/components/homepage";
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
             height={400}
           />
         </div>
-        <div className="fixed -bottom-40 -z-10 -right-60">
+        <div className="fixed -bottom-44 -right-48 -z-10">
           <Image
             src="/assets/red-block.svg"
             alt="Red Block"
