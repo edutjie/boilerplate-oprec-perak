@@ -6,9 +6,9 @@ import Individualpage from "../../app/components/individual";
 const Gamepage = () => {
   return (
     <>
-      <div className="relative w-full h-full overflow-auto bg-scroll">
+      <div className="w-full h-full overflow-auto bg-scroll">
         <Background />
-        <div className="">
+        <div className="relative">
           <Individualpage />
           <div className="absolute -top-20 -right-60 -z-10">
             <Image
@@ -38,7 +38,7 @@ const Gamepage = () => {
             <Image
               src="/assets/clouds-mobile.svg"
               alt="Red Block"
-              width={1200}
+              width={1000}
               height={400}
             />
           </div>
