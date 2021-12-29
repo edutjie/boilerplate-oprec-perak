@@ -3,7 +3,7 @@ import { TextOutline } from "../homepage/styles";
 
 const ConfirmationModal = () => {
   return (
-    <div className="mx-auto max-w-md bg-[#E5B632] border-black border-2 rounded-md p-5 z-10">
+    <div className="fixed float-left top-[50%] left-[50%] transfrom -translate-x-1/2 -translate-y-1/2 w-[80%] mx-auto max-w-xl bg-[#E5B632] border-black border-2 rounded-md p-8 z-10">
       <TextOutline className="font-black text-3xl text-[#6A7CC8] mt-10 text-center">
         Apakah Anda Yakin Ingin Mendaftar di Permainan Ini?
       </TextOutline>

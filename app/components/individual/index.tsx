@@ -60,7 +60,7 @@ const Individualpage = () => {
       </p>
       <Form />
       <ConfirmationModal />
-      {/* <ModalBackdrop /> */}
+      <ModalBackdrop />
     </div>
   );
 };
