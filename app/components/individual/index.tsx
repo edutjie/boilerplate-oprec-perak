@@ -7,7 +7,7 @@ import Form from "./Form";
 import ConfirmationModal from "./ConfirmationModal";
 import { ModalBackdrop } from "./styles";
 
-const Individualpage = () => {
+const Individual = () => {
   const router = useRouter();
   const { game } = router.query;
   const [content, setContent] = useState({
@@ -15,7 +15,7 @@ const Individualpage = () => {
     image: { data: { attributes: { url: "" } } },
     paymentDetail: { data: { attributes: { biayaPendaftaran: "" } } },
   });
-  const [payment, setPayment] = useState();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const game_url =
     game !== undefined
@@ -38,7 +38,7 @@ const Individualpage = () => {
           },
         } = await axios.get(url);
         setContent(attributes);
-        console.log(attributes);
+        // console.log(attributes);
       } catch (error) {
         return {};
       }
@@ -58,11 +58,26 @@ const Individualpage = () => {
       <p className="text-md font-medium">
         Instruksi pembayaran diberikan setelah mengisi form pendaftaran
       </p>
-      <Form />
-      <ConfirmationModal />
-      <ModalBackdrop />
+      <Form setModalIsOpen={setModalIsOpen} />
+      {modalIsOpen && (
+        <ConfirmationModal
+          onCancel={() => {
+            setModalIsOpen(false);
+          }}
+          onConfirm={() => {
+            setModalIsOpen(false);
+          }}
+        />
+      )}
+      {modalIsOpen && (
+        <ModalBackdrop
+          onClick={() => {
+            setModalIsOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 };
 
-export default Individualpage;
+export default Individual;

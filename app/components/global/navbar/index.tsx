@@ -7,15 +7,17 @@ const Navbar = () => {
     <nav className="w-full top-0 min-w-max bg-light-yellow">
       <div className="flex justify-between px-6 py-3 items-center">
         <div className="flex items-center">
-          <div className="pr-3">
-            <Image
-              src="/assets/logo.svg"
-              alt="Logo Perak"
-              width={50}
-              height={50}
-            />
-          </div>
-          <h1 className="font-extrabold">
+          <Link href={"/"} passHref>
+            <div className="pr-3 cursor-pointer">
+              <Image
+                src="/assets/logo.svg"
+                alt="Logo Perak"
+                width={50}
+                height={50}
+              />
+            </div>
+          </Link>
+          <h1 className="font-extrabold cursor-default">
             PESTA RAKYAT
             <br />
             KOMPUTER

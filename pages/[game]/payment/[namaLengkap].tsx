@@ -1,15 +1,14 @@
 import React from "react";
-import { Background } from "../../app/components/homepage/styles";
 import Image from "next/image";
-import Individual from "../../app/components/individual";
+import IndividualPaymentPage from "../../../app/components/individual/payment";
 
-const GamePage = () => {
+const PaymentPage = () => {
   return (
     <>
-      <div className="w-full h-full overflow-auto bg-scroll">
-        <Background />
+      <div className="w-full h-full overflow-auto bg-scroll ">
+        <div className="bg-grain bg-center bg-no-repeat bg-cover fixed h-screen w-screen z-[-1]"></div>
         <div className="relative">
-          <Individual />
+          <IndividualPaymentPage />
           <div className="absolute -top-20 -right-60 -z-10">
             <Image
               src="/assets/purple-block.svg"
@@ -18,7 +17,7 @@ const GamePage = () => {
               height={400}
             />
           </div>
-          <div className="absolute top-[245px] -left-60 -z-10">
+          <div className="absolute bottom-16 -left-[18rem] -z-10">
             <Image
               src="/assets/yellow-block.svg"
               alt="Yellow Block"
@@ -26,7 +25,7 @@ const GamePage = () => {
               height={400}
             />
           </div>
-          <div className="absolute -bottom-24 -right-48 -z-10">
+          <div className="absolute bottom-40 -right-60 -z-10">
             <Image
               src="/assets/red-block.svg"
               alt="Red Block"
@@ -48,4 +47,4 @@ const GamePage = () => {
   );
 };
 
-export default GamePage;
+export default PaymentPage;

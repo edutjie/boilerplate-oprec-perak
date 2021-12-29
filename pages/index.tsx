@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Background } from "../app/components/homepage/styles";
-import Homepage from "../app/components/homepage";
+import HomePage from "../app/components/homepage";
 
 const Home = () => {
   return (
     <>
       <div className="w-full h-full overflow-hidden">
         <Background />
-        <Homepage />
+        <HomePage />
         <div className="fixed top-0 -z-10 -right-60">
           <Image
             src="/assets/purple-block.svg"

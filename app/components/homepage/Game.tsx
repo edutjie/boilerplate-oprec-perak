@@ -9,7 +9,7 @@ const Game = ({ id, name, image }: GameInterface) => {
       <div
         className={`${
           (id - 1) % 3 ? "bg-light-purple" : "bg-[#03BF67]"
-        } min-w-[150px] min-h-[115px] flex justify-center items-center border-[1px] border-black rounded-sm`}
+        } min-w-[150px] min-h-[115px] flex justify-center items-center border-[1px] border-black rounded-sm cursor-pointer transform transition-transform hover:scale-[1.05]`}
       >
         <div
           className={`${
