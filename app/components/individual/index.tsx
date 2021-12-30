@@ -6,6 +6,7 @@ import GameHero from "./GameHero";
 import Form from "./Form";
 import ConfirmationModal from "./ConfirmationModal";
 import { ModalBackdrop } from "./styles";
+import { SubTextOutline, TextOutline } from "../homepage/styles";
 
 const Individual = () => {
   const router = useRouter();
@@ -49,16 +50,28 @@ const Individual = () => {
   const payment_fee = content.paymentDetail.data.attributes.biayaPendaftaran;
 
   return (
-    <div className="max-w-[80%] mx-auto">
-      <GameHero {...content} />
-      <h1 className="font-bold text-2xl mt-2">
-        Biaya pendaftaran : Rp
-        {payment_fee}
-      </h1>
-      <p className="text-md font-medium">
-        Instruksi pembayaran diberikan setelah mengisi form pendaftaran
-      </p>
-      <Form setModalIsOpen={setModalIsOpen} />
+    <div className="max-w-[80%] mx-auto mb-[200px]">
+      <TextOutline className="font-black text-3xl text-[#6A7CC8] mt-10 maxmd:hidden  md:text-5xl">
+        Pendaftaran Games
+        <br className="md:hidden" />
+        &nbsp;Individual
+      </TextOutline>
+      <div className="md:flex flex-row-reverse">
+        <GameHero {...content} />
+        <div className="w-full">
+          <SubTextOutline className="text-white font-sunflower font-bold text-2xl md:text-3xl md:mt-2 md:mb-5">
+            {content.name}
+          </SubTextOutline>
+          <h1 className="font-bold text-2xl mt-2">
+            Biaya pendaftaran : Rp
+            {payment_fee}
+          </h1>
+          <p className="text-md font-medium">
+            Instruksi pembayaran diberikan setelah mengisi form pendaftaran
+          </p>
+          <Form setModalIsOpen={setModalIsOpen} />
+        </div>
+      </div>
       {modalIsOpen && (
         <ConfirmationModal
           onCancel={() => {

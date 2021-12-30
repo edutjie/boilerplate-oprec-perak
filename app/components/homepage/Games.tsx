@@ -30,10 +30,10 @@ const Games = () => {
 
   return (
     <div>
-      <SubTextOutline className="text-white font-sunflower font-bold text-md">
+      <SubTextOutline className="text-white font-sunflower font-bold text-md md:text-3xl">
         Games Individual
       </SubTextOutline>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4 mt-3">
         {games.map((game: GameApiInterface) => (
           <Game {...game.attributes} key={game.id} id={game.id} />
         ))}

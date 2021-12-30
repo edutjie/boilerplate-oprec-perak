@@ -19,6 +19,9 @@ module.exports = {
       backgroundImage: {
         grain: "url('/assets/grain.svg')",
       },
+      screens: {
+        'maxmd': { 'raw': '(max-width: 768px)' },
+      }
     },
   },
   plugins: [

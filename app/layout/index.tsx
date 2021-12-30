@@ -8,7 +8,7 @@ const Layout = ({ children }: LayoutInterface) => {
     <>
       <Header />
       <Navbar />
-      <main className="bg-dark-yellow h-full fixed w-full">{children}</main>
+      <main className="bg-dark-yellow h-full fixed w-full -z-10">{children}</main>
     </>
   );
 };

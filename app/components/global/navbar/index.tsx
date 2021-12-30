@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="w-full top-0 min-w-max bg-light-yellow">
+    <nav className="w-full top-0 min-w-max bg-light-yellow z-10">
       <div className="flex justify-between px-6 py-3 items-center">
         <div className="flex items-center">
           <Link href={"/"} passHref>
@@ -23,8 +23,25 @@ const Navbar = () => {
             KOMPUTER
           </h1>
         </div>
-        <div className="font-bold">
-          <Link href={"/"}>Pendaftaran</Link>
+        <div className="flex lg:gap-14">
+          <div className="font-bold lg:hidden">
+            <Link href={"/"}>Pendaftaran</Link>
+          </div>
+          <div className="font-bold hidden lg:block">
+            <Link href={"/"}>Score Games Map</Link>
+          </div>
+          <div className="font-bold hidden lg:block">
+            <Link href={"/"}>Team Profile</Link>
+          </div>
+          <div className="font-bold hidden lg:block">
+            <Link href={"/"}>News</Link>
+          </div>
+          <div className="font-bold hidden lg:block">
+            <Link href={"/"}>Explore Cafeteria</Link>
+          </div>
+          <div className="font-bold hidden lg:block">
+            <Link href={"/"}>Merchandise</Link>
+          </div>
         </div>
       </div>
     </nav>
