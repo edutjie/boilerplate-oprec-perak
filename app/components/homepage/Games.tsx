@@ -17,9 +17,9 @@ const Games = () => {
 
       setIsLoading(false);
       setGames(data.data);
-    } catch (error) {
+    } catch (err) {
       setIsLoading(false);
-      console.log(error);
+      console.log(err);
       return [];
     }
   };

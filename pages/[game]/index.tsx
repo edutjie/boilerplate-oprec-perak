@@ -22,7 +22,7 @@ const GamePage = () => {
               height={400}
             />
           </div>
-          <div className="absolute maxmd:-left-60 md:bottom-[25rem]  md:right-72 -z-10 ">
+          <div className="absolute bottom-[32rem] maxmd:-left-60 md:bottom-[25rem]  md:right-72 -z-10 ">
             <Image
               src="/assets/yellow-block.svg"
               alt="Yellow Block"
@@ -30,7 +30,7 @@ const GamePage = () => {
               height={400}
             />
           </div>
-          <div className="absolute bottom-40 -right-[17rem] -z-10 md:-bottom-44 md:right-28">
+          <div className="absolute bottom-40 -right-[22rem] -z-10 md:-bottom-44 md:right-28">
             <Image
               src="/assets/red-block.svg"
               alt="Red Block"

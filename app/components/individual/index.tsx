@@ -1,6 +1,5 @@
-import React, { Attributes, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import axios from "axios";
 import GameHero from "./GameHero";
 import Form from "./Form";
@@ -17,6 +16,22 @@ const Individual = () => {
     paymentDetail: { data: { attributes: { biayaPendaftaran: "" } } },
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [confirmIsClicked, setConfirmIsClicked] = useState(false);
+
+  const [profilePict, setProfilePict] = useState(
+    "/assets/purple-rectangle.svg"
+  );
+  const [profilePictData, setProfilePictData] = useState("");
+  const [profilePictTitle, setProfilePictTitle] = useState("Aang Foto.jpg");
+
+  const [modifiedData, setModifiedData] = useState({
+    namaLengkap: "",
+    namaPanggilan: "",
+    npm: "",
+    idLine: "",
+    jenisElemen: "",
+    game: [0],
+  });
 
   const game_url =
     game !== undefined
@@ -35,17 +50,62 @@ const Individual = () => {
       try {
         const {
           data: {
-            data: [{ attributes }],
+            data: [{ id, attributes }],
           },
         } = await axios.get(url);
+        setModifiedData(prev => ({
+          ...prev,
+          game: [id],
+        }));
         setContent(attributes);
-        // console.log(attributes);
-      } catch (error) {
+      } catch (err) {
         return {};
       }
     };
     getContent();
   }, [game, url]);
+
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+    setConfirmIsClicked(true);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/registration-details`,
+        { data: modifiedData }
+      );
+      submitImageHandler(response.data.data.id);
+      setTimeout(() => {
+        router.push(`/${game}/payment/${modifiedData.namaLengkap}`);
+      }, 2000);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const submitImageHandler = (responseId: number) => {
+    console.log(responseId);
+    const formData = new FormData();
+    formData.append("files", profilePictData);
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/upload/`, formData)
+      .then(response => {
+        const imageId = response.data[0].id;
+        axios.put(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/registration-details/${responseId}`,
+          { data: { profilePicture: imageId } }
+        );
+      });
+  };
+
+  const FormHooks = {
+    setProfilePict,
+    setProfilePictData,
+    setProfilePictTitle,
+    profilePict,
+    profilePictTitle,
+    setModifiedData,
+    modifiedData,
+  };
 
   const payment_fee = content.paymentDetail.data.attributes.biayaPendaftaran;
 
@@ -69,7 +129,7 @@ const Individual = () => {
           <p className="text-md font-medium">
             Instruksi pembayaran diberikan setelah mengisi form pendaftaran
           </p>
-          <Form setModalIsOpen={setModalIsOpen} />
+          <Form setModalIsOpen={setModalIsOpen} {...FormHooks} />
         </div>
       </div>
       {modalIsOpen && (
@@ -77,15 +137,14 @@ const Individual = () => {
           onCancel={() => {
             setModalIsOpen(false);
           }}
-          onConfirm={() => {
-            setModalIsOpen(false);
-          }}
+          onConfirm={submitHandler}
+          isClicked={confirmIsClicked}
         />
       )}
       {modalIsOpen && (
         <ModalBackdrop
           onClick={() => {
-            setModalIsOpen(false);
+            setModalIsOpen(false || confirmIsClicked);
           }}
         />
       )}

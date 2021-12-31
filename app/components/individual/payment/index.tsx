@@ -47,6 +47,7 @@ const IndividualPaymentPage = () => {
           .join("%20")
       : game;
 
+  const [ppUrl, setPpUrl] = useState("");
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/registration-details?populate=profilePicture&filters[namaLengkap][$eq]=${namaLengkap}&fields=namaLengkap,namaPanggilan,npm,idLine,jenisElemen`;
   const url_for_game = `${process.env.NEXT_PUBLIC_BASE_URL}/api/games?populate=image,paymentDetail&filters[name][$eq]=${game_url}`;
 
@@ -69,6 +70,9 @@ const IndividualPaymentPage = () => {
           },
         } = await axios.get(url_for_game);
 
+        setPpUrl(
+          `${process.env.NEXT_PUBLIC_BASE_URL}${attributes.profilePicture.data.attributes.url}`
+        );
         setContent(attributes);
         setPaymentDetail(paymentDetail.data.attributes);
         setGameImage(image);
@@ -78,8 +82,6 @@ const IndividualPaymentPage = () => {
     };
     getContent();
   }, [game, namaLengkap, url, url_for_game]);
-
-  const pp_url = `${process.env.NEXT_PUBLIC_BASE_URL}${content.profilePicture.data.attributes.url}`;
 
   return (
     <div className="max-w-[80%] mx-auto mb-[200px]">
@@ -92,7 +94,7 @@ const IndividualPaymentPage = () => {
         <GameHero name={game_url as string} image={gameImage} />
         <div className="w-full">
           <SubTextOutline className="text-white font-sunflower font-bold text-2xl md:text-3xl md:mt-2 md:mb-5">
-            {game}
+            {game_url}
           </SubTextOutline>
           <h1 className="font-bold text-2xl mt-8">
             Terima kasih telah melakukan pendaftaran games di PERAK 2021
@@ -109,7 +111,7 @@ const IndividualPaymentPage = () => {
           </div>
           <div className="flex gap-3 items-center mt-5">
             <div className="p-2 bg-light-purple inline-block rounded-lg border-black border-2">
-              <ProfilePict src={pp_url} className="w-48 h-48 bg-dark-purple" />
+              <ProfilePict src={ppUrl} className="w-48 h-48 bg-dark-purple" />
             </div>
             <div>
               <h1 className="text-xl font-semibold">{content.namaLengkap}</h1>
@@ -118,7 +120,11 @@ const IndividualPaymentPage = () => {
               </p>
             </div>
           </div>
-          <PaymentDetail {...content} detilInformasi={detilInformasi} setDetilInformasi={setDetilInformasi} />
+          <PaymentDetail
+            {...content}
+            detilInformasi={detilInformasi}
+            setDetilInformasi={setDetilInformasi}
+          />
           <div className="mt-11 p-2 bg-light-green rounded-lg border-black border-2">
             <Link href={"/"} passHref>
               <button className="w-full py-2 px-3 bg-dark-green rounded-lg border-black border-2 text-xl font-semibold text-white">
